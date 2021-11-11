@@ -25,7 +25,11 @@ class _SearchState extends State<Search> {
     setState(() {
       cities =
           (prefs.getStringList('cities') ?? ['Санкт-Петербург']);
-      savedCities = (prefs.getStringList('savedcities').toSet() ?? {'Санкт-Петербург'});
+      if (prefs.getStringList('savedcities') == null)
+      {
+      savedCities = constCities.toSet();
+      }
+      else {savedCities = prefs.getStringList('savedcities').toSet();}
     });
 
   }

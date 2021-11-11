@@ -17,10 +17,10 @@ class _FavouritesState extends State<Favourites> {
   Future<void> initPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      cities = prefs.getStringList('savedcities') ?? ['Санкт-Петербург'];
+      cities = prefs.getStringList('savedcities');
     });
     if (prefs.getStringList('cities') == null) {
-      prefs.setStringList('savedcities', ['Санкт-Петербург']);
+      prefs.setStringList('savedcities', []);
     }
   }
 

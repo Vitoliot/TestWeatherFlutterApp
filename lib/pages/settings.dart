@@ -104,6 +104,7 @@ class _SettingsState extends State<Settings> {
                   ThemeColors.weekGradientStart = const Color(0xFFCDDAF5);
                   ThemeColors.weekGradientEnd = const Color(0xFF9CBCFF);
                   ThemeColors.menuButtons = const Color(0xFF0256FF);
+                  ThemeColors.ToWeekButtonColor = Color(0xFF0256FF);;
                   ThemeImages.background = const AssetImage("assets/images/light.png");
                 } else {
                   ThemeColors.black = Colors.white;
@@ -113,6 +114,7 @@ class _SettingsState extends State<Settings> {
                   ThemeColors.weekGradientStart = const Color(0xFF223B70);
                   ThemeColors.weekGradientEnd = const Color(0xFF0F1F40);
                   ThemeColors.menuButtons = const Color(0xFF0A1743);
+                  ThemeColors.ToWeekButtonColor = const Color(0xfffffffff);
                   ThemeImages.background = const AssetImage("assets/images/dark.png");
                 }
               }

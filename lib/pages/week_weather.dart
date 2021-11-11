@@ -126,7 +126,7 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
                         borderRadius: BorderRadius.circular(10));
                   }),
                 ),
-                child: const Text("Назад на главную"),
+                child: Text("Назад на главную", style: TextStyle(color: ThemeColors.ToWeekButtonColor)),
               )
             ],
           ),

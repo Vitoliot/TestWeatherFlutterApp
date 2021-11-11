@@ -213,7 +213,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                         if (states.contains(MaterialState.pressed)) {
                                           _borderColor = Colors.white;
                                         }
-                                        _borderColor = Colors.blue;
+                                        _borderColor = ThemeColors.ToWeekButtonColor;
 
                                         return BorderSide(color: _borderColor, width: 1);
                                       }),
@@ -223,7 +223,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                             borderRadius: BorderRadius.circular(10));
                                       }),
                                     ),
-                                    child: const Text("Прогноз на неделю"),
+                                    child: Text("Прогноз на неделю", style: TextStyle(color: ThemeColors.ToWeekButtonColor)),
                                   )),
                             const Divider(
                               height: 16.0,

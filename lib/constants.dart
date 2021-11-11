@@ -19,6 +19,7 @@ class ThemeColors {
   static Color weekGradientStart = const Color(0xFFCDDAF5);
   static Color weekGradientEnd = const Color(0xFF9CBCFF);
   static Color menuButtons = const Color(0xFF0256FF);
+  static Color ToWeekButtonColor = Color(0xFF0256FF);
 }
 
 class ThemeImages {

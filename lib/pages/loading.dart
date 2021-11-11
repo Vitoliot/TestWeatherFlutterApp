@@ -35,7 +35,7 @@ class _LoadingState extends State<Loading> {
   Future<void> initPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     currentCity = prefs.getString('activeCity') ?? 'Санкт-Петербург';
-    darkTheme = prefs.getBool('themeSettings');
+    if (prefs.getBool('themeSettings')!= null) {darkTheme = prefs.getBool('themeSettings');};
 
     if (darkTheme) {
       ThemeColors.black = Colors.white;
