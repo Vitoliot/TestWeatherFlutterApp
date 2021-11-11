@@ -22,6 +22,8 @@ class _AboutState extends State<About> {
           'О разработчике',
           style: TextStyle(
             fontSize: 20.0,
+            fontStyle: FontStyle.normal,
+            fontFamily: 'Manrope',
             fontWeight: FontWeight.w600,
             color: ThemeColors.black,
           ),
@@ -66,6 +68,8 @@ class _AboutState extends State<About> {
                         child: Text(
                           "Test Weather app",
                           style: TextStyle(
+                              fontStyle: FontStyle.normal,
+                              fontFamily: 'Manrope',
                               fontSize: 25.0,
                               fontWeight: FontWeight.w800,
                               color: ThemeColors.black)))),
@@ -97,6 +101,8 @@ class _AboutState extends State<About> {
                                     Text(
                                       "by Vitoliot",
                                       style: TextStyle(
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: 'Manrope',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w800,
                                           color: ThemeColors.black
@@ -105,6 +111,8 @@ class _AboutState extends State<About> {
                                     const Text(
                                       "Версия 1.0",
                                       style: TextStyle(
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: 'Manrope',
                                           fontSize: 10.0,
                                           fontWeight: FontWeight.w800,
                                           color: Color(0xFF4A4A4A)
@@ -113,6 +121,8 @@ class _AboutState extends State<About> {
                                     const Text(
                                       "от 08.11.2021",
                                       style: TextStyle(
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: 'Manrope',
                                           fontSize: 10.0,
                                           fontWeight: FontWeight.w800,
                                           color: Color(0xFF4A4A4A)
@@ -123,6 +133,8 @@ class _AboutState extends State<About> {
                                 const Text(
                                   "2021",
                                   style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontFamily: 'Manrope',
                                       fontSize: 10.0,
                                       fontWeight: FontWeight.w800,
                                       color: Color(0xFF4A4A4A)

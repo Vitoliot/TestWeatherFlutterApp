@@ -36,8 +36,8 @@ class DailyWeatherInfo extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(20.0)),
           gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
             stops: const [0.0, 1.0],
             colors: [
               ThemeColors.weekGradientStart,
@@ -54,6 +54,8 @@ class DailyWeatherInfo extends StatelessWidget {
                 Text(
                   dateFormat.format(date),
                   style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      fontFamily: 'Manrope',
                       fontSize: 24.0,
                       fontWeight: FontWeight.w600,
                       color: ThemeColors.black
@@ -70,7 +72,7 @@ class DailyWeatherInfo extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 45.0,),
+            const SizedBox(height: 40.0,),
             Row(
               children: [
                 WeatherRow(
@@ -118,7 +120,6 @@ class DailyWeatherInfo extends StatelessWidget {
         ),
       ),
     );
-    throw UnimplementedError();
   }
 
 

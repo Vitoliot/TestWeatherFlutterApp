@@ -44,6 +44,8 @@ class _FavouritesState extends State<Favourites> {
         title: Text(
           'Избранные',
           style: TextStyle(
+            fontStyle: FontStyle.normal,
+            fontFamily: 'Manrope',
             fontSize: 20.0,
             fontWeight: FontWeight.w600,
             color: ThemeColors.black,
@@ -72,7 +74,10 @@ class _FavouritesState extends State<Favourites> {
                       ),
                     ]),
                 child: ListTile(
-                  title: Text(word, style: TextStyle(color: ThemeColors.black),),
+                  title: Text(word, style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      fontFamily: 'Manrope',
+                      color: ThemeColors.black),),
                   trailing: IconButton(
                     icon: Icon(
                       Icons.close,

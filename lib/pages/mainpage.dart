@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:test_weather_flutter_app/api/models.dart';
 import 'package:test_weather_flutter_app/constants.dart';
@@ -117,7 +119,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       },
       child: DraggableScrollableSheet(
         initialChildSize: 0.4,
-        minChildSize: 0.4,
+        minChildSize: 0.35,
         maxChildSize: 0.6,
         builder: (BuildContext context, ScrollController scrollController) {
           return ClipRRect(
@@ -137,10 +139,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                             Container(
                                 width: 60.0,
                                 height: 6.0,
-                                decoration: const BoxDecoration(
-                                    color: Colors.blue,
+                                decoration: BoxDecoration(
+                                    color: ThemeColors.ToWeekButtonColor,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(10)))),
+                                    const BorderRadius.all(Radius.circular(10)))),
                             Padding(
                               padding: EdgeInsets.fromLTRB(0.0,
                                   8.0 + (sheetIsActive ? 16.0 : 0.0), 0.0, 16.0),
@@ -223,7 +225,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                             borderRadius: BorderRadius.circular(10));
                                       }),
                                     ),
-                                    child: Text("Прогноз на неделю", style: TextStyle(color: ThemeColors.ToWeekButtonColor)),
+                                    child: Text("Прогноз на неделю", style: TextStyle(
+                                        fontSize: 14,
+                                        fontStyle: FontStyle.normal,
+                                        fontFamily: 'Manrope',
+                                        color: ThemeColors.ToWeekButtonColor)),
                                   )),
                             const Divider(
                               height: 16.0,
@@ -309,6 +315,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   children: [
                     Text("Weather app",
                         style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontFamily: 'Manrope',
                             fontSize: 23.0, fontWeight: FontWeight.w800, color: ThemeColors.black)),
                     InkWell(
                       child: Row(
@@ -327,6 +335,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                 Text(
                                   'Настройки',
                                   style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontFamily: 'Manrope',
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w600,
                                       color: ThemeColors.black
@@ -360,6 +370,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                 Text(
                                   'Избранные',
                                   style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontFamily: 'Manrope',
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w600,
                                       color: ThemeColors.black
@@ -392,6 +404,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                 Text(
                                   'О приложении',
                                   style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontFamily: 'Manrope',
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w600,
                                       color: ThemeColors.black
@@ -437,12 +451,13 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                       builder: (context, child) {
                         return Transform.translate(
                           offset: Offset(0.0, 0.0 + (50.0 * _controller.value)),
-                          child: Text("${(isC ? (snapshot.data.list[0].temp.min) : (snapshot.data.list[0].temp.min)*9/5 + 32).toStringAsFixed(1)}${isC ? '˚C' : '˚F'}",
+                          child: Text("${(isC ? (snapshot.data.list[0].temp.min) : (snapshot.data.list[0].temp.min)*9/5 + 32).toStringAsFixed(1)}${isC ? '˚c' : '˚f'}",
                               style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 80.0,
                                   fontWeight: FontWeight.w600,
                                   fontStyle: FontStyle.normal,
+                                  fontFamily: 'Manrope',
                                   letterSpacing: -10.0,
                                   height: 1.15)),
                         );
@@ -453,6 +468,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                       duration: const Duration(milliseconds: 200),
                       child: Text(dateFormat.format(dateTime),
                           style: const TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Manrope',
                             color: Colors.white,
                             fontSize: 20.0,
                           )),
@@ -466,7 +484,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+                  padding: const EdgeInsets.symmetric(),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -492,6 +510,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16.0,
+                              fontStyle: FontStyle.normal,
+                              fontFamily: 'Manrope',
                               fontWeight: FontWeight.w600),
                         ),
                       ),

@@ -17,13 +17,14 @@ class WeatherInfo extends StatelessWidget{
         color: ThemeColors.weatherBackground,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         boxShadow: [
+          // BoxShadow(
+          //   color: Colors.grey.withOpacity(0.3),
+          //   spreadRadius: 0,
+          //   blurRadius: 9,
+          //   offset: const Offset(0, 9)),
           BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 0,
-            blurRadius: 9,
-            offset: const Offset(0, 9)),
-          BoxShadow(
-                  color: ThemeColors.black,
+              color: ThemeColors.black.withOpacity(0.2),
+              blurRadius: 1
                 ),
           BoxShadow(
                     color: ThemeColors.weatherBackground,
@@ -31,7 +32,7 @@ class WeatherInfo extends StatelessWidget{
                     blurRadius: 12.0,
                   )
             ]),
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -45,8 +46,10 @@ class WeatherInfo extends StatelessWidget{
             Text(
               data,
               style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 17.0,
+                  fontStyle: FontStyle.normal,
+                  fontFamily: 'Manrope',
+                  // fontWeight: FontWeight.w600,
                   color: ThemeColors.black
               ),
             )
@@ -54,7 +57,6 @@ class WeatherInfo extends StatelessWidget{
         ),
       ),
     );
-    throw UnimplementedError();
   }
 
 }

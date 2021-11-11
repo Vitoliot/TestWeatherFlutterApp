@@ -1,3 +1,5 @@
+// ignore_for_file: use_full_hex_values_for_flutter_colors
+
 import 'package:test_weather_flutter_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,7 +27,6 @@ class _LoadingState extends State<Loading> {
         return MainPage(locationDailyWeather: weatherDailyInfo, locationWeather: weatherInfo);
       }));
     } catch (e) {
-      print('this is $e');
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return const Search();
       }));
@@ -35,7 +36,7 @@ class _LoadingState extends State<Loading> {
   Future<void> initPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     currentCity = prefs.getString('activeCity') ?? 'Санкт-Петербург';
-    if (prefs.getBool('themeSettings')!= null) {darkTheme = prefs.getBool('themeSettings');};
+    if (prefs.getBool('themeSettings')!= null) {darkTheme = prefs.getBool('themeSettings');}
 
     if (darkTheme) {
       ThemeColors.black = Colors.white;
@@ -46,6 +47,7 @@ class _LoadingState extends State<Loading> {
       ThemeColors.weekGradientEnd = const Color(0xFF0F1F40);
       ThemeColors.menuButtons = const Color(0xFF0A1743);
       ThemeImages.background = const AssetImage("assets/images/dark.png");
+      ThemeColors.ToWeekButtonColor = const Color(0xfffffffff);
     }
   }
 
@@ -74,6 +76,8 @@ class _LoadingState extends State<Loading> {
               child: Text(
                 "Weather",
                 style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontFamily: 'Manrope',
                     fontSize: 35.0,
                     fontWeight: FontWeight.w600,
                     color: ThemeColors.black

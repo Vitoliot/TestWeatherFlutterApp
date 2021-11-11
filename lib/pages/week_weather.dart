@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:test_weather_flutter_app/api/models.dart';
 import 'package:test_weather_flutter_app/constants.dart';
@@ -47,7 +49,6 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
   @override
   Widget build(BuildContext context) {
     // args = ModalRoute.of(context).settings.arguments as Map;
-    var dateTime = DateTime.now();
 
     return Scaffold(
       body: Container(
@@ -60,7 +61,10 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
               Center(
                 child: Text(
                   "Прогноз на неделю",
-                  style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600, color: ThemeColors.black),
+                  style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      fontFamily: 'Manrope',
+                      fontSize: 24.0, fontWeight: FontWeight.w600, color: ThemeColors.black),
                 ),
               ),
               const SizedBox(
@@ -87,7 +91,10 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
                 );
                 }
                 else {return Text("Данные не получены",
-                    style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600, color: ThemeColors.black));}}
+                    style: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontFamily: 'Manrope',
+                        fontSize: 24.0, fontWeight: FontWeight.w600, color: ThemeColors.black));}}
                     ),
               const SizedBox(height: 40.0,),
               OutlinedButton(
@@ -101,7 +108,7 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
                         if (states.contains(MaterialState.pressed)) {
                           return ThemeColors.white;
                         }
-                        return ThemeColors.white;
+                        return ThemeColors.weatherBackground;
                       }),
                   overlayColor:
                   MaterialStateProperty.resolveWith<Color>(
@@ -126,7 +133,10 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
                         borderRadius: BorderRadius.circular(10));
                   }),
                 ),
-                child: Text("Назад на главную", style: TextStyle(color: ThemeColors.ToWeekButtonColor)),
+                child: Text("Назад на главную", style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontFamily: 'Manrope',
+                    color: ThemeColors.ToWeekButtonColor)),
               )
             ],
           ),

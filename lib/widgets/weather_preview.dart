@@ -19,14 +19,15 @@ class WeatherPreview extends StatelessWidget{
         color: ThemeColors.weatherPreview,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         boxShadow: [
+          // BoxShadow(
+          //   color: Colors.grey.withOpacity(0.3),
+          //   spreadRadius: 0,
+          //   blurRadius: 9,
+          //   offset: const Offset(0, 9), // changes position of shadow
+          // ),
           BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 0,
-            blurRadius: 9,
-            offset: const Offset(0, 9), // changes position of shadow
-          ),
-          BoxShadow(
-            color: ThemeColors.black,
+            color: ThemeColors.black.withOpacity(0.2),
+            blurRadius: 1
           ),
           BoxShadow(
             color: ThemeColors.weatherBackground,
@@ -39,7 +40,11 @@ class WeatherPreview extends StatelessWidget{
         children: [
           Text(
             time,
-            style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w400, color: ThemeColors.black),
+            style: TextStyle(fontSize: 17.0,
+                fontStyle: FontStyle.normal,
+                fontFamily: 'Manrope',
+                // fontWeight: FontWeight.w400,
+                color: ThemeColors.black),
           ),
           const Divider(
             height: 10.0,
@@ -55,13 +60,14 @@ class WeatherPreview extends StatelessWidget{
             data,
             style: TextStyle(
                 fontSize: 17.0,
-                fontWeight: FontWeight.w400,
+                fontStyle: FontStyle.normal,
+                fontFamily: 'Manrope',
+                // fontWeight: FontWeight.w400,
                 letterSpacing: -1.0, color: ThemeColors.black),
           ),
         ],
       ),
     );
-    throw UnimplementedError();
   }
 
 }

@@ -57,6 +57,8 @@ class _SearchState extends State<Search> {
         title: Text(
           'Добавить в избранные',
           style: TextStyle(
+            fontStyle: FontStyle.normal,
+            fontFamily: 'Manrope',
             fontSize: 20.0,
             fontWeight: FontWeight.w600,
             color: ThemeColors.black,
@@ -70,7 +72,11 @@ class _SearchState extends State<Search> {
           child: Column(
             children: [
               TextField(
-                style: TextStyle(color: ThemeColors.black),
+                style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontFamily: 'Manrope',
+                    color: ThemeColors.black
+                ),
                 controller: _controller,
                 onEditingComplete: () {
                   cities.add(city);
@@ -86,7 +92,8 @@ class _SearchState extends State<Search> {
                 },
                 decoration: InputDecoration(
                   hintText: 'Введите город...',
-                  hintStyle: TextStyle(color: ThemeColors.black),
+                  hintStyle: TextStyle(fontStyle: FontStyle.normal,
+                      fontFamily: 'Manrope',color: ThemeColors.black),
                   suffixIcon: IconButton(
                     onPressed: _controller.clear,
                     icon: const Icon(Icons.clear),
@@ -121,7 +128,10 @@ class _SearchState extends State<Search> {
                             ),
                           ]),
                       child: ListTile(
-                        title: Text(word, style: TextStyle(color: ThemeColors.black),),
+                        title: Text(word, style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontFamily: 'Manrope',
+                            color: ThemeColors.black),),
                         trailing: IconButton(
                                 icon: Icon(isSaved ? Icons.star : Icons.star_border),
                                 color: ThemeColors.black,

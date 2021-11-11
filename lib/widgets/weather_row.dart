@@ -24,6 +24,8 @@ class WeatherRow extends StatelessWidget {
           style: TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.w600,
+              fontStyle: FontStyle.normal,
+              fontFamily: 'Manrope',
               color: ThemeColors.black
           ),
         )

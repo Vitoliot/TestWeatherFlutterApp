@@ -1,3 +1,5 @@
+// ignore_for_file: use_full_hex_values_for_flutter_colors
+
 import 'package:flutter/material.dart';
 import 'package:test_weather_flutter_app/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,6 +50,8 @@ class _SettingsState extends State<Settings> {
         Text(
           name,
           style: TextStyle(
+              fontStyle: FontStyle.normal,
+              fontFamily: 'Manrope',
               color: ThemeColors.black,
               fontSize: 14.0,
               fontWeight: FontWeight.w600),
@@ -74,7 +78,10 @@ class _SettingsState extends State<Settings> {
                   child: Text(
                     valuesNamesList[0],
                     style:
-                    const TextStyle(fontWeight: FontWeight.w600, fontSize: 12.0),
+                    const TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontFamily: 'Manrope',
+                        fontWeight: FontWeight.w600, fontSize: 12.0),
                   ),
                 ),
               ),
@@ -84,7 +91,10 @@ class _SettingsState extends State<Settings> {
                   child: Text(
                     valuesNamesList[1],
                     style:
-                    const TextStyle(fontWeight: FontWeight.w600, fontSize: 12.0),
+                    const TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontFamily: 'Manrope',
+                        fontWeight: FontWeight.w600, fontSize: 12.0),
                   ),
                 ),
               ),
@@ -93,7 +103,7 @@ class _SettingsState extends State<Settings> {
             borderRadius: BorderRadius.circular(20.0),
             color: ThemeColors.black,
             selectedColor: Colors.white,
-            fillColor: Color(0x4B5F8888),
+            fillColor: const Color(0x4B5F8888),
             onPressed: (int index) async {
               if (attrName == 'themeSettings') {
                 if (attrList[0]) { // light
@@ -104,7 +114,7 @@ class _SettingsState extends State<Settings> {
                   ThemeColors.weekGradientStart = const Color(0xFFCDDAF5);
                   ThemeColors.weekGradientEnd = const Color(0xFF9CBCFF);
                   ThemeColors.menuButtons = const Color(0xFF0256FF);
-                  ThemeColors.ToWeekButtonColor = Color(0xFF0256FF);;
+                  ThemeColors.ToWeekButtonColor = const Color(0xFF0256FF);
                   ThemeImages.background = const AssetImage("assets/images/light.png");
                 } else {
                   ThemeColors.black = Colors.white;
@@ -158,6 +168,8 @@ class _SettingsState extends State<Settings> {
         title: Text(
           'Настройки',
           style: TextStyle(
+            fontStyle: FontStyle.normal,
+            fontFamily: 'Manrope',
             fontSize: 20.0,
             fontWeight: FontWeight.w600,
             color: ThemeColors.black,
@@ -177,6 +189,8 @@ class _SettingsState extends State<Settings> {
                     Text(
                       'Единицы измерения',
                       style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontFamily: 'Manrope',
                           color: Color(0xFF828282),
                           fontSize: 10.0,
                           fontWeight: FontWeight.w600),
