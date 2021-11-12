@@ -22,12 +22,13 @@ class _LoadingState extends State<Loading> {
   Future<void> getLocationData() async {
     try {
       var weatherInfo = await WeatherApi().fetchWeatherForecast(currentCity);
-      var weatherDailyInfo = await WeatherApi().fetchWeatherDailyForecast(currentCity);
-      weatherDailyInfo.list[0].weather = weatherInfo;
+      // var weatherDailyInfo = await WeatherApi().fetchWeatherDailyForecast(currentCity);
+      // weatherDailyInfo.list[0].weather = weatherInfo;
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return MainPage(locationDailyWeather: weatherDailyInfo, locationWeather: weatherInfo);
+        return MainPage(locationWeather: weatherInfo);
       }));
     } catch (e) {
+      print(e);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return const SearchfromLoading();
       }));

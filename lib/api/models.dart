@@ -23,6 +23,19 @@ class WeatherDailyForecast {
     }
   }
 
+  WeatherDailyForecast.fromJsonandList(Map<String, dynamic> json, List<Weather> weather_list) {
+    city = json['city'] != null ? City.fromJson(json['city']) : null;
+    cod = json['cod'];
+    message = json['message'];
+    cnt = json['cnt'];
+    if (json['list'] != null) {
+      list = [];
+      json['list'].forEach((v) {
+        list.add(WeatherList.fromJsonandList(v, weather_list));
+      });
+    }
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (city != null) {
@@ -140,6 +153,23 @@ class WeatherList {
         weather.add(Weather.fromJson(v));
       });
     }
+    speed = json['speed'];
+    deg = json['deg'];
+    clouds = json['clouds'];
+    rain = json['rain'];
+  }
+
+  WeatherList.fromJsonandList(Map<String, dynamic> json, List<Weather> weatherlist) {
+    dt = json['dt'];
+    sunrise = json['sunrise'];
+    sunset = json['sunset'];
+    temp = json['temp'] != null ? Temp.fromJson(json['temp']) : null;
+    feelsLike = json['feels_like'] != null
+        ? FeelsLike.fromJson(json['feels_like'])
+        : null;
+    pressure = json['pressure'];
+    humidity = json['humidity'];
+    weather = weatherlist;
     speed = json['speed'];
     deg = json['deg'];
     clouds = json['clouds'];

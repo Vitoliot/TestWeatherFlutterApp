@@ -16,10 +16,9 @@ import 'package:test_weather_flutter_app/widgets/weather_preview.dart';
 
 class MainPage extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
-  final locationDailyWeather;
   // ignore: prefer_typing_uninitialized_variables
   final locationWeather;
-  const MainPage({Key key, this.locationWeather, this.locationDailyWeather}) : super(key: key);
+  const MainPage({Key key, this.locationWeather}) : super(key: key);
 
 
   @override
@@ -64,9 +63,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     super.initState();
     initializeDateFormatting();
     dateFormat = DateFormat.yMMMMd('ru');
-    if (widget.locationDailyWeather != null) {
-      dailydata = Future.value(widget.locationDailyWeather);
-    }
+    // if (widget.locationDailyWeather != null) {
+    //   dailydata = Future.value(widget.locationDailyWeather);
+    // }
     if (widget.locationWeather != null) {
       data = Future.value(widget.locationWeather);
     }
@@ -133,7 +132,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             child: Container(
               color: ThemeColors.background,
               child: FutureBuilder<WeatherDailyForecast> (
-                future : dailydata,
+                future : data,
                 builder: (context, snapshot) {
                   if (snapshot.hasData){
                     return SingleChildScrollView(
