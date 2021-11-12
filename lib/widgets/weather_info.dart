@@ -14,7 +14,7 @@ class WeatherInfo extends StatelessWidget{
       width: 160.0,
       // height: 122,
       decoration: BoxDecoration(
-        color: ThemeColors.weatherBackground,
+        color: ThemeColors.background,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         boxShadow: [
           // BoxShadow(
@@ -27,7 +27,7 @@ class WeatherInfo extends StatelessWidget{
               blurRadius: 1
                 ),
           BoxShadow(
-                    color: ThemeColors.weatherBackground,
+                    color: ThemeColors.background,
                     spreadRadius: -12.0,
                     blurRadius: 12.0,
                   )

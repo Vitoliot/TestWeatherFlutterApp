@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_weather_flutter_app/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'loading.dart';
 
 class Search extends StatefulWidget {
@@ -13,23 +12,22 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  List<String> constCities = ['Санкт-Петербург', 'Москва'];
-  List<String> cities = ['Санкт-Петербург', 'Москва'];
-  Set<String> savedCities = <String>{};
+  List<String> cities = [];
+  Set<String> favoriteCities = <String>{};
   String city;
   Future<void> initPrefs() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.getStringList('cities') == null) {
-      prefs.setStringList('cities', savedCities.toList());
+    SharedPreferences storage = await SharedPreferences.getInstance();
+    if (storage.getStringList('cities') == null) {
+      storage.setStringList('cities', favoriteCities.toList());
     }
     setState(() {
       cities =
-          (prefs.getStringList('cities') ?? ['Санкт-Петербург']);
-      if (prefs.getStringList('savedcities') == null)
+          (storage.getStringList('cities') ?? []);
+      if (storage.getStringList('favoritecities') == null)
       {
-      savedCities = constCities.toSet();
+      favoriteCities = <String>{};
       }
-      else {savedCities = prefs.getStringList('savedcities').toSet();}
+      else {favoriteCities = storage.getStringList('favoritecities').toSet();}
     });
 
   }
@@ -49,7 +47,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ThemeColors.weatherBackground,
+        backgroundColor: ThemeColors.background,
         iconTheme: IconThemeData(
           color: ThemeColors.black,
         ),
@@ -66,7 +64,7 @@ class _SearchState extends State<Search> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(color: ThemeColors.weatherBackground),
+        decoration: BoxDecoration(color: ThemeColors.background),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           child: Column(
@@ -81,8 +79,8 @@ class _SearchState extends State<Search> {
                 onEditingComplete: () {
                   cities.add(city);
                   setState(() async {
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                    prefs.setStringList('cities', cities);
+                    SharedPreferences storage = await SharedPreferences.getInstance();
+                    storage.setStringList('cities', cities);
                     Navigator.pop(context);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -114,11 +112,11 @@ class _SearchState extends State<Search> {
                       const Divider(),
                   itemBuilder: (BuildContext context, int index) {
                     String word = cities[index];
-                    bool isSaved = savedCities.contains(word);
+                    bool isSaved = favoriteCities.contains(word);
 
                     return Container(
                       decoration: BoxDecoration(
-                          color: ThemeColors.weatherBackground,
+                          color: ThemeColors.background,
                           borderRadius: const BorderRadius.all(Radius.circular(12)),
                           boxShadow: [
                             BoxShadow(
@@ -138,16 +136,16 @@ class _SearchState extends State<Search> {
                                 onPressed: () async {
                                   setState(() {
                                     isSaved
-                                        ? savedCities.remove(word)
-                                        : savedCities.add(word);
+                                        ? favoriteCities.remove(word)
+                                        : favoriteCities.add(word);
                                   });
-                                  SharedPreferences prefs =
+                                  SharedPreferences storage =
                                       await SharedPreferences.getInstance();
-                                  prefs.setStringList("savedcities", savedCities.toList());
+                                  storage.setStringList("favoritecities", favoriteCities.toList());
                                 },),
                         onTap: () async {
-                          SharedPreferences prefs = await SharedPreferences.getInstance();
-                           prefs.setString('activeCity', cities.elementAt(index));
+                          SharedPreferences storage = await SharedPreferences.getInstance();
+                           storage.setString('activeCity', cities.elementAt(index));
                             Navigator.pushAndRemoveUntil(context,
                             MaterialPageRoute(builder: (context) {
                               return const Loading();}), (route) => false);},
@@ -155,9 +153,9 @@ class _SearchState extends State<Search> {
     setState(() {
           cities.remove(word);
         });
-        SharedPreferences prefs =
+        SharedPreferences storage =
         await SharedPreferences.getInstance();
-        prefs.setStringList("cities", cities);
+        storage.setStringList("cities", cities);
                         },
                       ),
                     );

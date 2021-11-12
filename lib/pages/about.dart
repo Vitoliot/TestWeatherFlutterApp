@@ -13,7 +13,7 @@ class _AboutState extends State<About> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ThemeColors.weatherBackground,
+        backgroundColor: ThemeColors.background,
         iconTheme: IconThemeData(
           color: ThemeColors.black,
         ),
@@ -31,12 +31,12 @@ class _AboutState extends State<About> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: ThemeColors.weatherBackground,
+          color: ThemeColors.background,
           boxShadow: [BoxShadow(
             color: ThemeColors.black,
           ),
             BoxShadow(
-              color: ThemeColors.weatherBackground,
+              color: ThemeColors.background,
               spreadRadius: -12.0,
               blurRadius: 12.0,
             ),]
@@ -53,7 +53,7 @@ class _AboutState extends State<About> {
                             height: 50,
                             width: 240,
                             decoration: BoxDecoration(
-                                color: ThemeColors.weatherBackground,
+                                color: ThemeColors.background,
                                 boxShadow: [
                                   BoxShadow(
                                   color: ThemeColors.black,
@@ -78,7 +78,7 @@ class _AboutState extends State<About> {
                     flex: 1,
                     child: Container(
                       decoration: BoxDecoration(
-                          color: ThemeColors.weatherBackground,
+                          color: ThemeColors.background,
                           borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(50.0),
                               topRight: Radius.circular(50.0)),

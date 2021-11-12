@@ -16,7 +16,7 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
-  String currentCity = 'Санкт-Петербург';
+  String currentCity;
   bool darkTheme = false;
 
   Future<void> getLocationData() async {
@@ -34,18 +34,17 @@ class _LoadingState extends State<Loading> {
   }
 
   Future<void> initPrefs() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    currentCity = prefs.getString('activeCity') ?? 'Санкт-Петербург';
-    if (prefs.getBool('themeSettings')!= null) {darkTheme = prefs.getBool('themeSettings');}
+    SharedPreferences storage = await SharedPreferences.getInstance();
+    currentCity = storage.getString('activeCity') ?? 'Санкт-Петербург';
+    if (storage.getBool('themeCustom')!= null) {darkTheme = storage.getBool('themeCustom');}
 
     if (darkTheme) {
       ThemeColors.black = Colors.white;
       ThemeColors.white = Colors.black;
-      ThemeColors.weatherBackground = const Color(0xFF0C172B);
-      ThemeColors.weatherPreview = const Color(0xFF0D182C);
-      ThemeColors.weekGradientStart = const Color(0xFF223B70);
-      ThemeColors.weekGradientEnd = const Color(0xFF0F1F40);
-      ThemeColors.menuButtons = const Color(0xFF0A1743);
+      ThemeColors.background = const Color(0xFF0C172B);
+      ThemeColors.preview = const Color(0xFF0D182C);
+      ThemeColors.GradientColorStart = const Color(0xFF223B70);
+      ThemeColors.GradientColorEnd = const Color(0xFF0F1F40);
       ThemeImages.background = const AssetImage("assets/images/dark.png");
       ThemeColors.ToWeekButtonColor = const Color(0xfffffffff);
     }
@@ -67,7 +66,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-            color: ThemeColors.weatherBackground
+            color: ThemeColors.background
         ),
         child: Column(
           children: [
@@ -85,7 +84,7 @@ class _LoadingState extends State<Loading> {
               ),
             ),
             const SizedBox(height: 120.0,),
-            Image.asset('assets/images/loader.png')
+            Image.asset('assets/images/loader.png', color: ThemeColors.ToWeekButtonColor,)
           ],
         ),
       ),

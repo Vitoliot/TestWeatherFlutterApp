@@ -44,15 +44,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   AnimationController _controller;
 
   Future<void> initPrefs() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences storage = await SharedPreferences.getInstance();
     setState(() {
-      bool C = prefs.getBool('tempSettings');
-      bool MpS = prefs.getBool('windSettings');
-      bool Mm = prefs.getBool('paSettings');
+      bool C = storage.getBool('tempCustom');
+      bool MpS = storage.getBool('windCustom');
+      bool Mm = storage.getBool('pressureCustom');
       if (C != null) {isC = C;}
       if (MpS != null) {isMpS = MpS;}
       if (Mm != null)  {isMm = Mm;}
-      currentCity = prefs.getString('activeCity') ?? 'Санкт-Петербург';
+      currentCity = storage.getString('activeCity') ?? 'Санкт-Петербург';
     });
   }
 
@@ -125,7 +125,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           return ClipRRect(
             borderRadius: const BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
             child: Container(
-              color: ThemeColors.weatherBackground,
+              color: ThemeColors.background,
               child: FutureBuilder<WeatherDailyForecast> (
                 future : data,
                 builder: (context, snapshot) {
@@ -148,7 +148,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                   8.0 + (sheetIsActive ? 16.0 : 0.0), 0.0, 16.0),
                               child: Center(
                                 child: AnimatedContainer(
-                                  color: ThemeColors.weatherBackground,
+                                  color: ThemeColors.background,
                                   width: sheetIsActive ? 500.0 : 0.0,
                                   height: sheetIsActive ? 20.0 : 0.0,
                                   duration: const Duration(milliseconds: 200),
@@ -198,9 +198,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                       MaterialStateProperty.resolveWith<Color>(
                                               (states) {
                                             if (states.contains(MaterialState.pressed)) {
-                                              return ThemeColors.weatherBackground;
+                                              return ThemeColors.background;
                                             }
-                                            return ThemeColors.weatherBackground;
+                                            return ThemeColors.background;
                                           }),
                                       overlayColor:
                                       MaterialStateProperty.resolveWith<Color>(
@@ -303,7 +303,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       drawer: Drawer(
         child: Container(
           decoration: BoxDecoration(
-              color: ThemeColors.weatherBackground
+              color: ThemeColors.background
           ),
           child: ListView(
             // Important: Remove any padding from the ListView.
@@ -493,7 +493,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                           Scaffold.of(context).openDrawer();
                         },
                         elevation: 4.0,
-                        fillColor: ThemeColors.menuButtons,
+                        fillColor: ThemeColors.background,
                         child: const Icon(
                           Icons.menu,
                           size: 20.0,
@@ -521,7 +521,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                             return const Search();}));
                         },
                         elevation: 4.0,
-                        fillColor: ThemeColors.menuButtons,
+                        fillColor: ThemeColors.background,
                         child: const Icon(
                           Icons.add,
                           size: 20.0,

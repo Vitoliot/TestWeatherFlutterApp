@@ -40,8 +40,8 @@ class DailyWeatherInfo extends StatelessWidget {
             end: Alignment.bottomRight,
             stops: const [0.0, 1.0],
             colors: [
-              ThemeColors.weekGradientStart,
-              ThemeColors.weekGradientEnd,
+              ThemeColors.GradientColorStart,
+              ThemeColors.GradientColorEnd,
             ],
           )
       ),

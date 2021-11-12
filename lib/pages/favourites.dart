@@ -15,13 +15,10 @@ class _FavouritesState extends State<Favourites> {
   List<String> cities = [];
 
   Future<void> initPrefs() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences storage = await SharedPreferences.getInstance();
     setState(() {
-      cities = prefs.getStringList('savedcities');
+      cities = storage.getStringList('favoritecities');
     });
-    if (prefs.getStringList('cities') == null) {
-      prefs.setStringList('savedcities', []);
-    }
   }
 
   @protected
@@ -36,7 +33,7 @@ class _FavouritesState extends State<Favourites> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ThemeColors.weatherBackground,
+        backgroundColor: ThemeColors.background,
         iconTheme: IconThemeData(
           color: ThemeColors.black,
         ),
@@ -53,7 +50,7 @@ class _FavouritesState extends State<Favourites> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(color: ThemeColors.weatherBackground),
+        decoration: BoxDecoration(color: ThemeColors.background),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           child: ListView.separated(
@@ -64,7 +61,7 @@ class _FavouritesState extends State<Favourites> {
 
               return Container(
                 decoration: BoxDecoration(
-                    color: ThemeColors.weatherBackground,
+                    color: ThemeColors.background,
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
                     boxShadow: [
                       BoxShadow(
@@ -84,16 +81,16 @@ class _FavouritesState extends State<Favourites> {
                       color: ThemeColors.black,
                     ),
                     onPressed: () async {
-                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      SharedPreferences storage = await SharedPreferences.getInstance();
                       setState(() {
                         cities.removeAt(index);
                       });
-                      prefs.setStringList('savedcities', cities);
+                      storage.setStringList('favoritecities', cities);
                     },
                   ),
                   onTap: () async {
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                    prefs.setString('activeCity', cities.elementAt(index));
+                    SharedPreferences storage = await SharedPreferences.getInstance();
+                    storage.setString('activeCity', cities.elementAt(index));
                     Navigator.pushAndRemoveUntil(context,
                         MaterialPageRoute(builder: (context) {
                           return const Loading();}), (route) => false);

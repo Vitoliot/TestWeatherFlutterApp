@@ -16,7 +16,7 @@ class WeatherPreview extends StatelessWidget{
       width: 65,
       padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 9.0),
       decoration: BoxDecoration(
-        color: ThemeColors.weatherPreview,
+        color: ThemeColors.preview,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         boxShadow: [
           // BoxShadow(
@@ -30,7 +30,7 @@ class WeatherPreview extends StatelessWidget{
             blurRadius: 1
           ),
           BoxShadow(
-            color: ThemeColors.weatherBackground,
+            color: ThemeColors.background,
             spreadRadius: -12.0,
             blurRadius: 12.0,
           )

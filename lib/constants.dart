@@ -14,13 +14,12 @@ class Constants {
 }
 
 class ThemeColors {
-  static Color weatherBackground = const Color(0xFFE2EBFF);
-  static Color weatherPreview = const Color(0xFFE0E9FD);
+  static Color background = const Color(0xFFE2EBFF);
+  static Color preview = const Color(0xFFE0E9FD);
   static Color black = const Color(0xFF000000);
   static Color white = const Color(0x0fffffff);
-  static Color weekGradientStart = const Color(0xFFCDDAF5);
-  static Color weekGradientEnd = const Color(0xFF9CBCFF);
-  static Color menuButtons = const Color(0xFF0256FF);
+  static Color GradientColorStart = const Color(0xFFCDDAF5);
+  static Color GradientColorEnd = const Color(0xFF9CBCFF);
   static Color ToWeekButtonColor = const Color(0xFF0256FF);
 }
 

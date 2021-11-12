@@ -24,11 +24,11 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
   bool isMm = true;
 
   Future<void> initPrefs() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences storage = await SharedPreferences.getInstance();
     setState(() {
-      bool C = prefs.getBool('tempSettings');
-      bool MpS = prefs.getBool('windSettings');
-      bool Mm = prefs.getBool('paSettings');
+      bool C = storage.getBool('tempCustom');
+      bool MpS = storage.getBool('windCustom');
+      bool Mm = storage.getBool('pressureCustom');
       if (C != null) {isC = C;}
       if (MpS != null) {isMpS = MpS;}
       if (Mm != null)  {isMm = Mm;}
@@ -52,7 +52,7 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
 
     return Scaffold(
       body: Container(
-        color: ThemeColors.weatherBackground,
+        color: ThemeColors.background,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 34.0, horizontal: 20.0),
           child:
@@ -108,7 +108,7 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
                         if (states.contains(MaterialState.pressed)) {
                           return ThemeColors.white;
                         }
-                        return ThemeColors.weatherBackground;
+                        return ThemeColors.background;
                       }),
                   overlayColor:
                   MaterialStateProperty.resolveWith<Color>(
