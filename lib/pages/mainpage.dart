@@ -38,6 +38,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   bool isC = true;
   bool isMpS = true;
   bool isMm = true;
+  bool isDark = false;
 
   DateFormat dateFormat;
 
@@ -49,9 +50,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       bool C = storage.getBool('tempCustom');
       bool MpS = storage.getBool('windCustom');
       bool Mm = storage.getBool('pressureCustom');
+      bool Dark = storage.getBool('themeCustom');
       if (C != null) {isC = C;}
       if (MpS != null) {isMpS = MpS;}
       if (Mm != null)  {isMm = Mm;}
+      if (Dark != null)  {isDark = Dark;}
       currentCity = storage.getString('activeCity') ?? 'Санкт-Петербург';
     });
   }
@@ -82,10 +85,13 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         return 'assets/images/weather_state/states/cloudy.png';
       }
       case 'Clear': {
-        return  'assets/images/weather_state/sun.png';
+        return isDark ? 'assets/images/weather_state/states/sun_dark.png': 'assets/images/weather_state/states/sun.png';
       }
       case 'Rain': {
-        return 'assets/images/weather_state/states/rainy.png';
+        return isDark ? 'assets/images/weather_state/states/rain_dark.png' : 'assets/images/weather_state/states/rain.png';
+      }
+      case 'Snow' : {
+        return 'assets/images/weather_state/states/snowy.png';
       }
       default: {
         return 'assets/images/weather_state/states/partly_cloudy.png';
@@ -127,7 +133,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             child: Container(
               color: ThemeColors.background,
               child: FutureBuilder<WeatherDailyForecast> (
-                future : data,
+                future : dailydata,
                 builder: (context, snapshot) {
                   if (snapshot.hasData){
                     return SingleChildScrollView(
@@ -170,13 +176,13 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                     image: getWeatherIconPath(snapshot.data.list[0].weather[0].main),
                                     data: '${(isC ? (snapshot.data.list[0].temp.morn) : (snapshot.data.list[0].temp.morn)*9/5 + 32).toStringAsFixed(1)}${isC ? '˚C' : '˚F'}'),
                                 WeatherPreview(time: '12:00',
-                                    image: getWeatherIconPath(snapshot.data.list[0].weather[0].main),
+                                    image: getWeatherIconPath(snapshot.data.list[0].weather[2].main),
                                     data: '${(isC ? (snapshot.data.list[0].temp.day) : (snapshot.data.list[0].temp.day)*9/5 + 32).toStringAsFixed(1)}${isC ? '˚C' : '˚F'}'),
                                 WeatherPreview(time: '18:00',
-                                    image: getWeatherIconPath(snapshot.data.list[0].weather[0].main),
+                                    image: getWeatherIconPath(snapshot.data.list[0].weather[4].main),
                                     data: '${(isC ? (snapshot.data.list[0].temp.eve) : (snapshot.data.list[0].temp.eve)*9/5 + 32).toStringAsFixed(1)}${isC ? '˚C' : '˚F'}'),
                                 WeatherPreview(time: '00:00',
-                                    image: getWeatherIconPath(snapshot.data.list[0].weather[0].main),
+                                    image: getWeatherIconPath(snapshot.data.list[0].weather[6].main),
                                     data: '${(isC ? (snapshot.data.list[0].temp.night) : (snapshot.data.list[0].temp.night)*9/5 + 32).toStringAsFixed(1)}${isC ? '˚C' : '˚F'}'),
                               ],
                             ),
@@ -493,7 +499,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                           Scaffold.of(context).openDrawer();
                         },
                         elevation: 4.0,
-                        fillColor: ThemeColors.background,
+                        fillColor: ThemeColors.menuUpButtons,
                         child: const Icon(
                           Icons.menu,
                           size: 20.0,
@@ -521,7 +527,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                             return const Search();}));
                         },
                         elevation: 4.0,
-                        fillColor: ThemeColors.background,
+                        fillColor: ThemeColors.menuUpButtons,
                         child: const Icon(
                           Icons.add,
                           size: 20.0,

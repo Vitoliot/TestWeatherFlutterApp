@@ -4,7 +4,7 @@ import 'package:test_weather_flutter_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_weather_flutter_app/api/daily_weather.dart';
-import 'package:test_weather_flutter_app/pages/search.dart';
+import 'package:test_weather_flutter_app/pages/search_from_loading.dart';
 import 'mainpage.dart';
 
 class Loading extends StatefulWidget {
@@ -21,14 +21,15 @@ class _LoadingState extends State<Loading> {
 
   Future<void> getLocationData() async {
     try {
-      var weatherDailyInfo = await WeatherApi().fetchWeatherDailyForecast(currentCity);
       var weatherInfo = await WeatherApi().fetchWeatherForecast(currentCity);
+      var weatherDailyInfo = await WeatherApi().fetchWeatherDailyForecast(currentCity);
+      weatherDailyInfo.list[0].weather = weatherInfo;
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return MainPage(locationDailyWeather: weatherDailyInfo, locationWeather: weatherInfo);
       }));
     } catch (e) {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return const Search();
+        return const SearchfromLoading();
       }));
     }
   }
@@ -47,6 +48,7 @@ class _LoadingState extends State<Loading> {
       ThemeColors.GradientColorEnd = const Color(0xFF0F1F40);
       ThemeImages.background = const AssetImage("assets/images/dark.png");
       ThemeColors.ToWeekButtonColor = const Color(0xfffffffff);
+      ThemeColors.menuUpButtons = const Color(0x051340);
     }
   }
 

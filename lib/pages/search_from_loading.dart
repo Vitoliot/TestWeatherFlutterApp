@@ -4,15 +4,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'loading.dart';
 import 'mainpage.dart';
 
-class Search extends StatefulWidget {
-  const Search({Key key}) : super(key: key);
+class SearchfromLoading extends StatefulWidget {
+  const SearchfromLoading({Key key}) : super(key: key);
 
   @override
-  _SearchState createState() =>
-      _SearchState();
+  _SearchfromLoadingState createState() =>
+      _SearchfromLoadingState();
 }
 
-class _SearchState extends State<Search> {
+class _SearchfromLoadingState extends State<SearchfromLoading> {
   List<String> cities = [];
   Set<String> favoriteCities = <String>{};
   String city;
@@ -56,17 +56,8 @@ class _SearchState extends State<Search> {
             children: [
               Row(
                 children: [
-                  IconButton(
-                    iconSize: 16,
-                    onPressed: () {
-                      Navigator.pop(context);},
-                    icon: Icon(Icons.arrow_back_ios_outlined,
-                    color: ThemeColors.black),),
-                    const SizedBox(
-                    width: 10.0,
-                    ),
                     Container(
-                      width: 294,
+                      width: 350,
                         color: ThemeColors.background,
                         child:
                     TextField(
@@ -84,7 +75,7 @@ class _SearchState extends State<Search> {
                       Navigator.pop(context);
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                          return const Search();}));
+                          return const SearchfromLoading();}));
                   }
                   );
                 },

@@ -78,7 +78,10 @@ flutter:
     - assets/images/weather_state/states/slight_touch_happyday.png
     - assets/images/weather_state/states/snowy.png
     - assets/images/weather_state/states/thnderstorm.png
-    - assets/images/weather_state/sun.png
+    - assets/images/weather_state/states/sun.png
+    - assets/images/weather_state/states/sun_dark.png
+    - assets/images/weather_state/states/rain.png
+    - assets/images/weather_state/states/rain_dark.png
     - assets/images/loader.png
     - assets/images/dark.png
     - assets/images/light.png

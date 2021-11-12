@@ -17,11 +17,6 @@ class WeatherInfo extends StatelessWidget{
         color: ThemeColors.background,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         boxShadow: [
-          // BoxShadow(
-          //   color: Colors.grey.withOpacity(0.3),
-          //   spreadRadius: 0,
-          //   blurRadius: 9,
-          //   offset: const Offset(0, 9)),
           BoxShadow(
               color: ThemeColors.black.withOpacity(0.2),
               blurRadius: 1

@@ -114,6 +114,7 @@ class _SettingsState extends State<Settings> {
                   ThemeColors.GradientColorStart = const Color(0xFFCDDAF5);
                   ThemeColors.GradientColorEnd = const Color(0xFF9CBCFF);
                   ThemeColors.ToWeekButtonColor = const Color(0xFF0256FF);
+                  ThemeColors.menuUpButtons = const Color(0xFF0256FF);
                   ThemeImages.background = const AssetImage("assets/images/light.png");
                 } else {
                   ThemeColors.black = Colors.white;
@@ -123,6 +124,7 @@ class _SettingsState extends State<Settings> {
                   ThemeColors.GradientColorStart = const Color(0xFF223B70);
                   ThemeColors.GradientColorEnd = const Color(0xFF0F1F40);
                   ThemeColors.ToWeekButtonColor = const Color(0xfffffffff);
+                  ThemeColors.menuUpButtons = const Color(0x051340);
                   ThemeImages.background = const AssetImage("assets/images/dark.png");
                 }
               }

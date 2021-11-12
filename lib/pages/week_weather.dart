@@ -22,6 +22,7 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
   bool isC = true;
   bool isMpS = true;
   bool isMm = true;
+  bool isDark = false;
 
   Future<void> initPrefs() async {
     SharedPreferences storage = await SharedPreferences.getInstance();
@@ -29,9 +30,11 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
       bool C = storage.getBool('tempCustom');
       bool MpS = storage.getBool('windCustom');
       bool Mm = storage.getBool('pressureCustom');
+      bool Dark = storage.getBool('themeCustom');
       if (C != null) {isC = C;}
       if (MpS != null) {isMpS = MpS;}
       if (Mm != null)  {isMm = Mm;}
+      if (Dark != null)  {isDark = Dark;}
     });
   }
 
@@ -80,7 +83,7 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
                       child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
-                        DailyWeatherInfo(date: DateTime.now(), data: snapshot.data.list[0], params: [isC, isMpS, isMm]),
+                        DailyWeatherInfo(date: DateTime.now(), data: snapshot.data.list[0], params: [isC, isMpS, isMm, isDark]),
                         DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 1)), data: snapshot.data.list[1], params: [isC, isMpS, isMm]),
                         DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 2)), data: snapshot.data.list[2], params: [isC, isMpS, isMm]),
                         DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 3)), data: snapshot.data.list[3], params: [isC, isMpS, isMm]),

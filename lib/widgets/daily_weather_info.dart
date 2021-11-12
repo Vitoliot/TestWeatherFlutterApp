@@ -19,10 +19,13 @@ class DailyWeatherInfo extends StatelessWidget {
         return 'assets/images/weather_state/states/cloudy.png';
       }
       case 'Clear': {
-        return  'assets/images/weather_state/sun.png';
+        return params[3] ? 'assets/images/weather_state/sun_dark.png': 'assets/images/weather_state/sun.png';
       }
       case 'Rain': {
-        return 'assets/images/weather_state/states/rainy.png';
+        return params[3] ? 'assets/images/weather_state/rain_dark.png' : 'assets/images/weather_state/rain.png';
+      }
+      case 'Snow' : {
+        return 'assets/images/weather_state/states/snowy.png';
       }
       default: {
         return 'assets/images/weather_state/states/partly_cloudy.png';

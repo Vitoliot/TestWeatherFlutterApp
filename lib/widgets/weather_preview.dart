@@ -12,19 +12,13 @@ class WeatherPreview extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 122,
+      height: 142,
       width: 65,
       padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 9.0),
       decoration: BoxDecoration(
         color: ThemeColors.preview,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         boxShadow: [
-          // BoxShadow(
-          //   color: Colors.grey.withOpacity(0.3),
-          //   spreadRadius: 0,
-          //   blurRadius: 9,
-          //   offset: const Offset(0, 9), // changes position of shadow
-          // ),
           BoxShadow(
             color: ThemeColors.black.withOpacity(0.2),
             blurRadius: 1
@@ -46,15 +40,18 @@ class WeatherPreview extends StatelessWidget{
                 // fontWeight: FontWeight.w400,
                 color: ThemeColors.black),
           ),
-          const Divider(
-            height: 10.0,
+          Divider(
+            height: 20.0,
+            color: ThemeColors.background
           ),
           Image.asset(
             image,
             width: 40.0,
           ),
-          const Divider(
-            height: 10.0,
+
+          Divider(
+            height: 20.0,
+            color: ThemeColors.background,
           ),
           Text(
             data,
@@ -63,7 +60,8 @@ class WeatherPreview extends StatelessWidget{
                 fontStyle: FontStyle.normal,
                 fontFamily: 'Manrope',
                 // fontWeight: FontWeight.w400,
-                letterSpacing: -1.0, color: ThemeColors.black),
+                letterSpacing: -1.0, 
+                color: ThemeColors.black),
           ),
         ],
       ),

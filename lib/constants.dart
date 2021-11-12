@@ -20,6 +20,7 @@ class ThemeColors {
   static Color white = const Color(0x0fffffff);
   static Color GradientColorStart = const Color(0xFFCDDAF5);
   static Color GradientColorEnd = const Color(0xFF9CBCFF);
+  static Color menuUpButtons = const Color(0xFF0256FF);
   static Color ToWeekButtonColor = const Color(0xFF0256FF);
 }
 
