@@ -195,7 +195,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                   child: OutlinedButton(
                                     onPressed: () {
                                       Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                      return WeatherAppWeek(locationDailyWeather: dailydata);
+                                      return WeatherAppWeek(locationDailyWeather: data);
                                     }));
                                     },
                                     style: ButtonStyle(
