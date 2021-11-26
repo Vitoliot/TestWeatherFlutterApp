@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:test_weather_flutter_app/pages/about.dart';
 import 'package:test_weather_flutter_app/pages/favourites.dart';
+import 'package:test_weather_flutter_app/pages/loading.dart';
 import 'package:test_weather_flutter_app/pages/settings.dart';
 import 'package:test_weather_flutter_app/pages/week_weather.dart';
 import 'package:test_weather_flutter_app/pages/search.dart';
@@ -63,9 +64,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     super.initState();
     initializeDateFormatting();
     dateFormat = DateFormat.yMMMMd('ru');
-    // if (widget.locationDailyWeather != null) {
-    //   dailydata = Future.value(widget.locationDailyWeather);
-    // }
     if (widget.locationWeather != null) {
       data = Future.value(widget.locationWeather);
     }
@@ -424,6 +422,42 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
                           return const About();}));
+                      },
+                    ),
+                    InkWell(
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 42.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.wb_sunny_outlined, color: ThemeColors.black, ),
+                                const VerticalDivider(
+                                  width: 14.0,
+                                  thickness: 0,
+                                  color: Colors.transparent,
+                                ),
+                                Text(
+                                  'Тема',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontFamily: 'Manrope',
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w600,
+                                      color: ThemeColors.black
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {
+                        SharedPreferences storage = await SharedPreferences.getInstance();
+                        storage.setBool('themeCustom', !isDark);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return const Loading();}));
                       },
                     ),
                   ],

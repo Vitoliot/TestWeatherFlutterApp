@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "COMPATIBLE_SCREEN_MANIFEST",
+    "kind": "Directory"
+  },
+  "applicationId": "vitoliot.test_weather_flutter_app",
+  "variantName": "debug",
+  "elements": []
+}

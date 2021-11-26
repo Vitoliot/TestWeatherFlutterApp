@@ -19,10 +19,10 @@ class DailyWeatherInfo extends StatelessWidget {
         return 'assets/images/weather_state/states/cloudy.png';
       }
       case 'Clear': {
-        return params[3] ? 'assets/images/weather_state/sun_dark.png': 'assets/images/weather_state/sun.png';
+        return params[3] ? 'assets/images/weather_state/states/sun_dark.png': 'assets/images/weather_state/states/sun.png';
       }
       case 'Rain': {
-        return params[3] ? 'assets/images/weather_state/rain_dark.png' : 'assets/images/weather_state/rain.png';
+        return params[3] ? 'assets/images/weather_state/states/rain_dark.png' : 'assets/images/weather_state/states/rain.png';
       }
       case 'Snow' : {
         return 'assets/images/weather_state/states/snowy.png';
@@ -36,8 +36,21 @@ class DailyWeatherInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 320,
+      height: 390,
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+          boxShadow: [
+            BoxShadow(
+                color: ThemeColors.black.withOpacity(0.2),
+                blurRadius: 1
+            ),
+            BoxShadow(
+              color: ThemeColors.background,
+              spreadRadius: -12.0,
+              blurRadius: 12.0,
+            )
+          ],
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -75,7 +88,7 @@ class DailyWeatherInfo extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 40.0,),
+            const SizedBox(height: 30.0,),
             Row(
               children: [
                 WeatherRow(

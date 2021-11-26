@@ -84,12 +84,12 @@ class _WeatherAppWeekState extends State<WeatherAppWeek> {
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
                         DailyWeatherInfo(date: DateTime.now(), data: snapshot.data.list[0], params: [isC, isMpS, isMm, isDark]),
-                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 1)), data: snapshot.data.list[1], params: [isC, isMpS, isMm]),
-                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 2)), data: snapshot.data.list[2], params: [isC, isMpS, isMm]),
-                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 3)), data: snapshot.data.list[3], params: [isC, isMpS, isMm]),
-                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 4)), data: snapshot.data.list[4], params: [isC, isMpS, isMm]),
-                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 5)), data: snapshot.data.list[5], params: [isC, isMpS, isMm]),
-                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 6)), data: snapshot.data.list[6], params: [isC, isMpS, isMm]),
+                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 1)), data: snapshot.data.list[1], params: [isC, isMpS, isMm, isDark]),
+                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 2)), data: snapshot.data.list[2], params: [isC, isMpS, isMm, isDark]),
+                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 3)), data: snapshot.data.list[3], params: [isC, isMpS, isMm, isDark]),
+                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 4)), data: snapshot.data.list[4], params: [isC, isMpS, isMm, isDark]),
+                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 5)), data: snapshot.data.list[5], params: [isC, isMpS, isMm, isDark]),
+                        DailyWeatherInfo(date: DateTime.now().add(const Duration(days: 6)), data: snapshot.data.list[6], params: [isC, isMpS, isMm, isDark]),
                 ])
                 );
                 }

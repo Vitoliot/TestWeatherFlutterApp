@@ -77,11 +77,11 @@ class _SearchState extends State<Search> {
                     ),
                     controller: _controller,
                     onEditingComplete: () {
-                      cities.add(city);
                       setState(() async {
+                        cities.add(city);
                       SharedPreferences storage = await SharedPreferences.getInstance();
                       storage.setStringList('cities', cities);
-                      Navigator.pop(context);
+                     Navigator.pop(context);
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                           return const Search();}));

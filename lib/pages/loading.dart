@@ -22,13 +22,10 @@ class _LoadingState extends State<Loading> {
   Future<void> getLocationData() async {
     try {
       var weatherInfo = await WeatherApi().fetchWeatherForecast(currentCity);
-      // var weatherDailyInfo = await WeatherApi().fetchWeatherDailyForecast(currentCity);
-      // weatherDailyInfo.list[0].weather = weatherInfo;
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return MainPage(locationWeather: weatherInfo);
       }));
     } catch (e) {
-      print(e);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return const SearchfromLoading();
       }));
@@ -50,6 +47,17 @@ class _LoadingState extends State<Loading> {
       ThemeImages.background = const AssetImage("assets/images/dark.png");
       ThemeColors.ToWeekButtonColor = const Color(0xfffffffff);
       ThemeColors.menuUpButtons = const Color(0x051340);
+    }
+    else {
+      ThemeColors.black = Colors.black;
+      ThemeColors.white = Colors.white;
+      ThemeColors.background = const Color(0xFFE2EBFF);
+      ThemeColors.preview = const Color(0xFFE0E9FD);
+      ThemeColors.GradientColorStart = const Color(0xFFCDDAF5);
+      ThemeColors.GradientColorEnd = const Color(0xFF9CBCFF);
+      ThemeColors.ToWeekButtonColor = const Color(0xFF0256FF);
+      ThemeColors.menuUpButtons = const Color(0xFF0256FF);
+      ThemeImages.background = const AssetImage("assets/images/light.png");
     }
   }
 

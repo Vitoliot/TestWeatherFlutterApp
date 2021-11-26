@@ -14,10 +14,10 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  bool tempCustom = true;
-  bool windCustom = true;
-  bool pressureCustom = true;
-  bool themeCustom = true;
+  List<bool> tempCustom = [true, false];
+  List<bool> windCustom = [true, false];
+  List<bool> pressureCustom = [true, false];
+  List<bool> themeCustom = [true, false];
 
   Future<void> initSettings() async {
     SharedPreferences folder = await SharedPreferences.getInstance();
@@ -25,11 +25,9 @@ class _SettingsState extends State<Settings> {
       bool temp = folder.getBool('tempCustom');
       bool wind = folder.getBool('windCustom');
       bool pa = folder.getBool('pressureCustom');
-      bool theme = folder.getBool('themeCustom');
-      if (temp != null) {tempCustom = temp;}
-      if (wind != null) {windCustom = wind;}
-      if (pa != null) {pressureCustom = pa;}
-      if (theme != null) {themeCustom = theme;}
+      if (temp != null) {tempCustom = [temp, !temp];}
+      if (wind != null) {windCustom = [wind, !wind];}
+      if (pa != null) {pressureCustom = [pa, !pa];}
     });
   }
 
@@ -42,7 +40,7 @@ class _SettingsState extends State<Settings> {
   }
 
   Widget createSetting(
-      name, value, attrName, attrList, valuesNamesList) {
+      name, attrName, attrList, valuesNamesList) {
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,7 +68,8 @@ class _SettingsState extends State<Settings> {
               ),
             ],
           ),
-          child: ToggleButtons(
+          child:
+          ToggleButtons(
             children: <Widget>[
               SizedBox(
                 width: 65.0,
@@ -105,43 +104,19 @@ class _SettingsState extends State<Settings> {
             selectedColor: Colors.white,
             fillColor: const Color(0x4B5F8888),
             onPressed: (int index) async {
-              if (attrName == 'themeCustom') {
-                if (attrList[0]) { // light
-                  ThemeColors.black = Colors.black;
-                  ThemeColors.white = Colors.white;
-                  ThemeColors.background = const Color(0xFFE2EBFF);
-                  ThemeColors.preview = const Color(0xFFE0E9FD);
-                  ThemeColors.GradientColorStart = const Color(0xFFCDDAF5);
-                  ThemeColors.GradientColorEnd = const Color(0xFF9CBCFF);
-                  ThemeColors.ToWeekButtonColor = const Color(0xFF0256FF);
-                  ThemeColors.menuUpButtons = const Color(0xFF0256FF);
-                  ThemeImages.background = const AssetImage("assets/images/light.png");
-                } else {
-                  ThemeColors.black = Colors.white;
-                  ThemeColors.white = Colors.black;
-                  ThemeColors.background = const Color(0xFF0C172B);
-                  ThemeColors.preview = const Color(0xFF0D182C);
-                  ThemeColors.GradientColorStart = const Color(0xFF223B70);
-                  ThemeColors.GradientColorEnd = const Color(0xFF0F1F40);
-                  ThemeColors.ToWeekButtonColor = const Color(0xfffffffff);
-                  ThemeColors.menuUpButtons = const Color(0x051340);
-                  ThemeImages.background = const AssetImage("assets/images/dark.png");
-                }
-              }
               SharedPreferences storage = await SharedPreferences.getInstance();
               setState(() {
-                for (int i = 0; i < attrList.length; i++) {
-                  if (i == index) {
-                    attrList[i] = true;}
-                  else {attrList[i] = false;}
+                if (index == 0) {
+                  attrList[index] = !attrList[index];
+                  attrList[1] = !attrList[1];
+                }
+                else {
+                  attrList[index] = !attrList[index];
+                  attrList[0] = !attrList[0];
                 }
               });
               storage.setBool(attrName, attrList[0]);
-              Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) {
-                    return const Settings();}));
-            },
+            }
           ),
         )
       ],
@@ -227,9 +202,8 @@ class _SettingsState extends State<Settings> {
                     children: [
                       createSetting(
                           'Температура',
-                          tempCustom,
                           "tempCustom",
-                          [tempCustom, !tempCustom],
+                          tempCustom,
                           ['˚C', '˚F']),
                       Divider(
                         height: 32.0,
@@ -238,9 +212,8 @@ class _SettingsState extends State<Settings> {
                       ),
                       createSetting(
                           'Сила ветра',
-                          windCustom,
                           "windCustom",
-                          [windCustom, !windCustom],
+                          windCustom,
                           ['м/с', 'км/ч']),
                       Divider(
                         height: 32.0,
@@ -249,21 +222,9 @@ class _SettingsState extends State<Settings> {
                       ),
                       createSetting(
                           'Давление',
-                          pressureCustom,
                           "pressureCustom",
-                          [pressureCustom, !pressureCustom],
+                          pressureCustom,
                           ['мм.рт.ст.', 'гПа']),
-                      Divider(
-                        height: 32.0,
-                        thickness: 1.0,
-                        color: Colors.black.withOpacity(.15),
-                      ),
-                      createSetting(
-                          'Тема оформления',
-                          themeCustom,
-                          "themeCustom",
-                          [themeCustom, !themeCustom],
-                          ['Темная', 'Светлая']),
                     ],
                   ),
                 ),
